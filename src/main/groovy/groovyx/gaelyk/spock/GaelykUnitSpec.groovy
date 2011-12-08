@@ -18,11 +18,12 @@ import com.google.appengine.api.taskqueue.*
 import com.google.appengine.api.xmpp.*
 import com.google.appengine.tools.development.testing.*
 import groovyx.gaelyk.*
-import java.io.PrintWriter
 import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletResponse
+import groovyx.gaelyk.plugins.PluginsHandler
+import spock.lang.Specification
 
-class GaelykUnitSpec extends spock.lang.Specification {
+class GaelykUnitSpec extends Specification {
 	
 	def groovletInstance
 	def helper
@@ -50,9 +51,17 @@ class GaelykUnitSpec extends spock.lang.Specification {
 			new LocalFileServiceTestConfig()
 		)
 		helper.setUp()
-		
-		Object.mixin GaelykCategory
-		
+
+        Object.mixin GaelykCategory
+        PluginsHandler.instance.scriptContent = { String path ->
+            def file = new File("war/" + path)
+            file.exists() ? file.text : ""
+        }
+        PluginsHandler.instance.initPlugins()
+        PluginsHandler.instance.categories.each {
+            Object.mixin it
+        }
+
 		sout = Mock(ServletOutputStream)
 		out = Mock(PrintWriter)
 		response = Mock(HttpServletResponse)
@@ -84,7 +93,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 				version: SystemProperty.version.get(),
 			],
 			gaelyk: [
-				version: '0.7'
+				version: '1.1'
 			],
 			id: SystemProperty.applicationId.get(),
 			version: SystemProperty.applicationVersion.get()
@@ -107,4 +116,3 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	}
 		
 }
-	
