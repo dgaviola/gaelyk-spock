@@ -13,4 +13,4 @@ if (xmpp.getPresence(jid).isAvailable()) {
 	messageSent = (status.getStatusMap().get(jid) == SendResponse.Status.SUCCESS)
 }
 
-request.success = messageSent
+request.setAttribute 'success', messageSent

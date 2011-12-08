@@ -1,3 +1,3 @@
 //user service
 assert users
-request.loggedIn = users.userLoggedIn
+request.setAttribute 'loggedIn', users.userLoggedIn

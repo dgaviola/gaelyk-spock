@@ -1,1 +1,1 @@
-request.shutdown = lifecycle.isShuttingDown()
+request.setAttribute 'shutdown', lifecycle.isShuttingDown()

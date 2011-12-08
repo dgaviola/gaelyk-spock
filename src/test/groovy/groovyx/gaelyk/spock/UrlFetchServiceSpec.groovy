@@ -28,6 +28,6 @@ class UrlFetchServiceSpec extends GaelykUnitSpec {
 		
 		then: "the url service should return a valid response"
 		urlFetch.fetch(new URL(url)) >> response
-		urlFetchGroovlet.request.result == response
+		1 * urlFetchGroovlet.request.setAttribute('result', response)
 	}
 }

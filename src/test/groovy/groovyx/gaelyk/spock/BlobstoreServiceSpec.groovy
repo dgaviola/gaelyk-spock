@@ -17,7 +17,7 @@ class BlobstoreServiceSpec extends GaelykUnitSpec {
 		blobstoreGroovlet.get()
 		
 		then:
-		blobstoreGroovlet.request.success == true
+		1 * blobstoreGroovlet.request.setAttribute('success', true)
 	}
 	
 }

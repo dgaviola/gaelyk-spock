@@ -1,11 +1,11 @@
 assert defaultQueue
 
-request.queueName = defaultQueue.queueName
+request.setAttribute 'queueName', defaultQueue.queueName
 
 assert queues
 
 def accessQueue = queues.default
-request.someQueue = accessQueue.queueName
+request.setAttribute 'someQueue', accessQueue.queueName
 def task = accessQueue.add()
-request.task = task.name
+request.setAttribute 'task', task.name
 accessQueue.deleteTask(task)

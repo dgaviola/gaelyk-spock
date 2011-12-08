@@ -18,14 +18,12 @@ class BasicUseCasesCovered extends GaelykUnitSpec {
 		basicGroovlet.params.param2 == 'two'
 	}
 	
-	def "request is present and params added"(){
-		given: "a groovlet that places params into the request is invoked"
+	def "request is present and attribute added"(){
+		when: "a groovlet that places params into the request is invoked"
 		basicGroovlet.get()
 		
-		expect: "all params to be present in request"
-		basicGroovlet.request.param1 == 'one'
-		basicGroovlet.request.param2 == 'two'
-		basicGroovlet.request.param3 == 'three'
+		then: "all params to be present in request"
+		1 * basicGroovlet.request.setAttribute('attr1', 'val1')
 	}
 	
 	def "logger is present and dumps to console"(){

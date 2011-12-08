@@ -17,6 +17,6 @@ class LifecycleManagerSpec extends GaelykUnitSpec {
 		lifecycleManagerGroovlet.get()
 		
 		then:
-		lifecycleManagerGroovlet.request.shutdown == false
+		1 * lifecycleManagerGroovlet.request.setAttribute('shutdown', false)
 	}	
 }

@@ -1,2 +1,2 @@
 //blobstore
-request.success = (blobstore != null)
+request.setAttribute 'success', (blobstore != null)

@@ -21,8 +21,7 @@ log.finer 'finer log'
 log.finest 'finest log'
 
 //request
-request << params
-request.param3 = 'three'
+request.setAttribute 'attr1', 'val1'
 
 if(params.redirectme){
 	log.info 'In the redirect block...'

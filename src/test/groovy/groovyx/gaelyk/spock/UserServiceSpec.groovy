@@ -17,6 +17,6 @@ class UserServiceSpec extends GaelykUnitSpec {
 		userServiceGroovlet.get()
 		
 		then:
-		! userServiceGroovlet.request.userLoggedIn
+		1 * userServiceGroovlet.request.setAttribute('loggedIn', false)
 	}
 }

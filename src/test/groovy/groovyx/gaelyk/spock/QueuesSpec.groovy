@@ -23,7 +23,7 @@ class QueueSpec extends GaelykUnitSpec {
 		queuesGroovlet.get()
 		
 		then:
-		queuesGroovlet.request.queueName == 'default'
+		1 * queuesGroovlet.request.setAttribute('queueName', 'default')
 	}
 	
 	def "queue accessor is accessed from within groovlet"(){
@@ -31,7 +31,7 @@ class QueueSpec extends GaelykUnitSpec {
 		queuesGroovlet.get()
 		
 		then:
-		queuesGroovlet.request.someQueue == 'default'
-		queuesGroovlet.request.task == 'task1'
+		queuesGroovlet.request.setAttribute('someQueue', 'default')
+		queuesGroovlet.request.setAttribute('task', 'task1')
 	}
 }

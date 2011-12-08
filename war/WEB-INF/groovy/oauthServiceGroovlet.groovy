@@ -1,1 +1,1 @@
-request.consumerKey = oauth.getOAuthConsumerKey()
+request.setAttribute 'consumerKey', oauth.getOAuthConsumerKey()

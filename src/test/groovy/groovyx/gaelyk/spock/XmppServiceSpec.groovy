@@ -18,6 +18,6 @@ class XmppServiceSpec extends GaelykUnitSpec {
 		xmppGroovlet.get()
 		
 		then:
-		xmppGroovlet.request.success == true
+		1 * xmppGroovlet.request.setAttribute('success',  true)
 	}
 }

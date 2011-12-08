@@ -21,6 +21,6 @@ class OAuthServiceSpec extends GaelykUnitSpec {
 		
 		then:
 		1 * oauth.getOAuthConsumerKey() >> consumerKey
-		oauthServiceGroovlet.request.consumerKey == consumerKey
+		1 * oauthServiceGroovlet.request.setAttribute('consumerKey', consumerKey)
 	}
 }
