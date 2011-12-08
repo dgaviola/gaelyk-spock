@@ -43,15 +43,15 @@ dependencies {
 }
 
 idea {
-    project {
-        jdkName = compatibilityVersion
+	project {
+		jdkName = compatibilityVersion
 
-        ipr.withXml { provider ->
-            def node = provider.asNode()
+		ipr.withXml { provider ->
+			def node = provider.asNode()
 
-            // Set Gradle home
-            def gradleSettings = node.appendNode('component', [name: 'GradleSettings'])
-            gradleSettings.appendNode('option', [name: 'SDK_HOME', value: gradle.gradleHomeDir])
-        }
-    }
+			// Set Gradle home
+			def gradleSettings = node.appendNode('component', [name: 'GradleSettings'])
+			gradleSettings.appendNode('option', [name: 'SDK_HOME', value: gradle.gradleHomeDir])
+		}
+	}
 }
