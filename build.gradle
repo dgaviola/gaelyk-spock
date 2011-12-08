@@ -4,7 +4,7 @@ apply plugin: "groovy"
 apply plugin: "eclipse"
 apply plugin: 'idea'
 archivesBaseName = "gaelyk-spock"
-version = "0.2"
+version = "0.2.1"
 
 def compatibilityVersion = 1.7
 sourceCompatibility = compatibilityVersion
